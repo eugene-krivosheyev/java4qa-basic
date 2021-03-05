@@ -9,6 +9,7 @@ public interface SysoutCaptureAndAssertionAbility {
     ByteArrayOutputStream OUT = new ByteArrayOutputStream();
 
     default void captureSysout() {
+        System.setProperty("line.separator", "\n");
         System.setOut(new PrintStream(OUT));
     }
 
