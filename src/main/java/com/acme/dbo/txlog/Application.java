@@ -19,8 +19,6 @@ public class Application {
         log(message);
         System.out.println(">> " + message);
 
-        log("");
-        System.out.println(PI);
 
 //        new Facade();
         //...
