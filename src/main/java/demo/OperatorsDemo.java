@@ -99,6 +99,19 @@ public strictfp class OperatorsDemo {
         //region ternary
         final Object result = check() ? get1Option() : 3;
         //endregion
+
+        System.out.println(f1() != f2());
+
+    }
+
+    private static boolean f1() {
+        System.out.println("f1");
+        return false;
+    }
+
+    private static boolean f2() {
+        System.out.println("f2");
+        return true;
     }
 
     private static boolean check() {
