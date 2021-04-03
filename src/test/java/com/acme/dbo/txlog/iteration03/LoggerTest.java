@@ -1,8 +1,10 @@
 package com.acme.dbo.txlog.iteration03;
 
+import com.acme.dbo.txlog.Facade;
 import com.acme.dbo.txlog.SysoutCaptureAndAssertionAbility;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Test;
 
 import java.io.IOException;
 
@@ -20,8 +22,8 @@ public class LoggerTest implements SysoutCaptureAndAssertionAbility {
     }
     //endregion
 
-    /*
-    TODO: implement Logger solution to match specification as tests
+
+    //TODO: implement Logger solution to match specification as tests
 
     @Test
     public void shouldLogIntegersArray() throws IOException {
@@ -30,8 +32,8 @@ public class LoggerTest implements SysoutCaptureAndAssertionAbility {
         //endregion
 
         //region then
-        assertSysoutEquals(
-            "primitives array: {-1, 0, 1}\n"
+        assertSysoutContains(
+            "primitives array: {-1, 0, 1}"
         );
         //endregion
     }
@@ -44,15 +46,15 @@ public class LoggerTest implements SysoutCaptureAndAssertionAbility {
 
         //region then
         assertSysoutEquals(
-            "primitives matrix: {\n" +
-                "{-1, 0, 1}\n" +
-                "{1, 2, 3}\n" +
-                "{-1, -2, -3}\n" +
-            "}\n"
+            "primitives matrix: {\r\n" +
+                "{-1, 0, 1}\r\n" +
+                "{1, 2, 3}\r\n" +
+                "{-1, -2, -3}\r\n" +
+            "}\r\n"
         );
         //endregion
     }
-
+/*
     @Test
     public void shouldLogIntegersMulitidimentionalArray() throws IOException {
         //region when
