@@ -2,6 +2,7 @@ package com.acme.dbo.txlog;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -18,6 +19,12 @@ public interface SysoutCaptureAndAssertionAbility {
 
     default void assertSysoutContains(String expected) {
         assertThat(OUT.toString()).contains(expected);
+    }
+
+    default void assertSysoutContains(List<String> expected) {
+        for (String s: expected){
+            assertSysoutContains(s);
+        }
     }
 
     default void resetOut() {
