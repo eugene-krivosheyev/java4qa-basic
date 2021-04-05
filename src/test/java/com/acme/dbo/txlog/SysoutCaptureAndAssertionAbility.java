@@ -13,11 +13,11 @@ public interface SysoutCaptureAndAssertionAbility {
     }
 
     default void assertSysoutEquals(String expected) {
-        assertThat(OUT.toString()).isEqualTo(expected);
+        assertThat(OUT.toString().replace( "\r",  "")).isEqualTo(expected);
     }
 
     default void assertSysoutContains(String expected) {
-        assertThat(OUT.toString()).contains(expected);
+        assertThat(OUT.toString(). replace ("\r","")).contains(expected);
     }
 
     default void resetOut() {
