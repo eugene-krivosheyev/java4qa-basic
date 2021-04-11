@@ -2,11 +2,14 @@ package com.acme.dbo.txlog.iteration01;
 
 import com.acme.dbo.txlog.Facade;
 import com.acme.dbo.txlog.SysoutCaptureAndAssertionAbility;
+import com.acme.dbo.txlog.controller.LoggerController;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
+
+import static java.lang.System.lineSeparator;
 
 public class LoggerTest implements SysoutCaptureAndAssertionAbility {
     //region given
@@ -26,13 +29,16 @@ public class LoggerTest implements SysoutCaptureAndAssertionAbility {
     public void shouldLogInteger() throws IOException {
         //region when
         Facade.log(1);
+        LoggerController.flush(LoggerController.Types.INT);
         Facade.log(0);
+        LoggerController.flush(LoggerController.Types.INT);
         Facade.log(-1);
+        LoggerController.flush(LoggerController.Types.INT);
         //endregion
 
         //region then
         assertSysoutContains("primitive: ");
-        assertSysoutEquals("primitive: 1\nprimitive: 0\nprimitive: -1\n");
+        assertSysoutEquals("primitive: 1" + lineSeparator() + "primitive: 0" + lineSeparator() + "primitive: -1" + lineSeparator());
         //endregion
     }
 
@@ -40,8 +46,11 @@ public class LoggerTest implements SysoutCaptureAndAssertionAbility {
     public void shouldLogByte() throws IOException {
         //region when
         Facade.log((byte)1);
+        LoggerController.flush(LoggerController.Types.BYTE);
         Facade.log((byte)0);
+        LoggerController.flush(LoggerController.Types.BYTE);
         Facade.log((byte)-1);
+        LoggerController.flush(LoggerController.Types.BYTE);
         //endregion
 
         //region then
@@ -52,8 +61,6 @@ public class LoggerTest implements SysoutCaptureAndAssertionAbility {
         //endregion
     }
 
-    /*
-    TODO: implement Logger solution to match specification as tests
 
     @Test
     public void shouldLogChar() throws IOException {
@@ -69,11 +76,13 @@ public class LoggerTest implements SysoutCaptureAndAssertionAbility {
         //endregion
     }
 
+
     @Test
     public void shouldLogString() throws IOException {
         //region when
         Facade.log("test string 1");
         Facade.log("other str");
+        LoggerController.flush(LoggerController.Types.STRING);
         //endregion
 
         //region then
@@ -108,6 +117,4 @@ public class LoggerTest implements SysoutCaptureAndAssertionAbility {
         assertSysoutContains("@");
         //endregion
     }
-
-    */
 }
