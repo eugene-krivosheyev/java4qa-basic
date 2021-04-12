@@ -26,8 +26,11 @@ public class LoggerTest implements SysoutCaptureAndAssertionAbility {
     public void shouldLogInteger() throws IOException {
         //region when
         Facade.log(1);
+        Facade.close();
         Facade.log(0);
+        Facade.close();
         Facade.log(-1);
+        Facade.close();
         //endregion
 
         //region then
@@ -40,8 +43,11 @@ public class LoggerTest implements SysoutCaptureAndAssertionAbility {
     public void shouldLogByte() throws IOException {
         //region when
         Facade.log((byte)1);
+        Facade.close();
         Facade.log((byte)0);
+        Facade.close();
         Facade.log((byte)-1);
+        Facade.close();
         //endregion
 
         //region then
@@ -52,8 +58,6 @@ public class LoggerTest implements SysoutCaptureAndAssertionAbility {
         //endregion
     }
 
-    /*
-    TODO: implement Logger solution to match specification as tests
 
     @Test
     public void shouldLogChar() throws IOException {
@@ -73,7 +77,9 @@ public class LoggerTest implements SysoutCaptureAndAssertionAbility {
     public void shouldLogString() throws IOException {
         //region when
         Facade.log("test string 1");
+        Facade.close();
         Facade.log("other str");
+        Facade.close();
         //endregion
 
         //region then
@@ -108,6 +114,4 @@ public class LoggerTest implements SysoutCaptureAndAssertionAbility {
         assertSysoutContains("@");
         //endregion
     }
-
-    */
 }
