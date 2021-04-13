@@ -8,6 +8,8 @@ import org.junit.Test;
 
 import java.io.IOException;
 
+import static java.lang.System.*;
+
 public class LoggerTest implements SysoutCaptureAndAssertionAbility {
     //region given
     @Before
@@ -25,23 +27,23 @@ public class LoggerTest implements SysoutCaptureAndAssertionAbility {
     @Test
     public void shouldLogInteger() throws IOException {
         //region when
-        Facade.log(1);
-        Facade.log(0);
-        Facade.log(-1);
+        Facade.log(1); Facade.flush();
+        Facade.log(0); Facade.flush();
+        Facade.log(-1); Facade.flush();
         //endregion
 
         //region then
         assertSysoutContains("primitive: ");
-        assertSysoutEquals("primitive: 1\nprimitive: 0\nprimitive: -1\n");
+        assertSysoutEquals("primitive: 1"+ lineSeparator()+"primitive: 0"+ lineSeparator()+"primitive: -1"+ lineSeparator());
         //endregion
     }
 
     @Test
     public void shouldLogByte() throws IOException {
         //region when
-        Facade.log((byte)1);
-        Facade.log((byte)0);
-        Facade.log((byte)-1);
+        Facade.log((byte)1);Facade.flush();
+        Facade.log((byte)0);Facade.flush();
+        Facade.log((byte)-1);Facade.flush();
         //endregion
 
         //region then
@@ -52,8 +54,8 @@ public class LoggerTest implements SysoutCaptureAndAssertionAbility {
         //endregion
     }
 
-    /*
-    TODO: implement Logger solution to match specification as tests
+
+ //   TODO: implement Logger solution to match specification as tests
 
     @Test
     public void shouldLogChar() throws IOException {
@@ -72,8 +74,8 @@ public class LoggerTest implements SysoutCaptureAndAssertionAbility {
     @Test
     public void shouldLogString() throws IOException {
         //region when
-        Facade.log("test string 1");
-        Facade.log("other str");
+        Facade.log("test string 1"); Facade.flush();
+        Facade.log("other str");Facade.flush();
         //endregion
 
         //region then
@@ -109,5 +111,5 @@ public class LoggerTest implements SysoutCaptureAndAssertionAbility {
         //endregion
     }
 
-    */
+
 }
