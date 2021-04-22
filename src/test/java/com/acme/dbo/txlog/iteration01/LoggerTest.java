@@ -1,12 +1,15 @@
 package com.acme.dbo.txlog.iteration01;
 
-import com.acme.dbo.txlog.Facade;
 import com.acme.dbo.txlog.SysoutCaptureAndAssertionAbility;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
+
+import static com.acme.dbo.txlog.Facade.flush;
+import static com.acme.dbo.txlog.Facade.log;
+import static java.lang.System.lineSeparator;
 
 public class LoggerTest implements SysoutCaptureAndAssertionAbility {
     //region given
@@ -25,23 +28,30 @@ public class LoggerTest implements SysoutCaptureAndAssertionAbility {
     @Test
     public void shouldLogInteger() throws IOException {
         //region when
-        Facade.log(1);
-        Facade.log(0);
-        Facade.log(-1);
+        log(1);
+        flush();
+        log(0);
+        flush();
+        log(-1);
+        flush();
         //endregion
 
         //region then
         assertSysoutContains("primitive: ");
-        assertSysoutEquals("primitive: 1\nprimitive: 0\nprimitive: -1\n");
+        assertSysoutEquals("primitive: 1" + lineSeparator() + "primitive: 0" + lineSeparator() + "primitive: -1" + lineSeparator());
         //endregion
     }
 
     @Test
     public void shouldLogByte() throws IOException {
         //region when
-        Facade.log((byte)1);
-        Facade.log((byte)0);
-        Facade.log((byte)-1);
+        log((byte)1);
+        flush();
+        log((byte)0);
+        flush();
+        log((byte)-1);
+        flush();
+
         //endregion
 
         //region then
@@ -52,14 +62,14 @@ public class LoggerTest implements SysoutCaptureAndAssertionAbility {
         //endregion
     }
 
-    /*
-    TODO: implement Logger solution to match specification as tests
 
     @Test
     public void shouldLogChar() throws IOException {
         //region when
-        Facade.log('a');
-        Facade.log('b');
+        log('a');
+        flush();
+        log('b');
+        flush();
         //endregion
 
         //region then
@@ -69,11 +79,14 @@ public class LoggerTest implements SysoutCaptureAndAssertionAbility {
         //endregion
     }
 
+
     @Test
     public void shouldLogString() throws IOException {
         //region when
-        Facade.log("test string 1");
-        Facade.log("other str");
+        log("test string 1");
+        flush();
+        log("other str");
+        flush();
         //endregion
 
         //region then
@@ -83,11 +96,14 @@ public class LoggerTest implements SysoutCaptureAndAssertionAbility {
         //endregion
     }
 
+
     @Test
     public void shouldLogBoolean() throws IOException {
         //region when
-        Facade.log(true);
-        Facade.log(false);
+        log(true);
+        flush();
+        log(false);
+        flush();
         //endregion
 
         //region then
@@ -97,10 +113,12 @@ public class LoggerTest implements SysoutCaptureAndAssertionAbility {
         //endregion
     }
 
+
     @Test
     public void shouldLogReference() throws IOException {
         //region when
-        Facade.log(new Object());
+        log(new Object());
+        flush();
         //endregion
 
         //region then
@@ -109,5 +127,4 @@ public class LoggerTest implements SysoutCaptureAndAssertionAbility {
         //endregion
     }
 
-    */
 }
