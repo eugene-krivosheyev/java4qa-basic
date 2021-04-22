@@ -3,6 +3,10 @@ Java Application Development
 
 _2. Java Application as a White Box: designing, coding, debugging and using._ 51hrs.
 
+# Recordings
+- [25.02](https://us02web.zoom.us/rec/share/gGCYwGMkiVbxse0RRQCdQioacna880vWEywb52Rpuk-my1sAoa5XhdIzrcGRIucN.icrDiEvIak0gUTUT)
+- [02.03](https://us02web.zoom.us/rec/share/vLjSe665N9hAkVosrEt-Z-dpZlSmSJg6ESrlgdTgIn9CFuSto3Wvbail5jA8g0KY._pRYjSPd41mY7C6L)
+
 # Attendee prerequisites
 - [ ] Training «1. Java Application Building» completion
 
@@ -126,6 +130,8 @@ git clone --branch master --depth 1 https://github.com/ACCOUNT/java-application-
 - [ ] Run tests from IDEA 
 ### DoD
 - [ ] All given specifications runs are green
+- [ ] Code reuse and minimum code duplication
+- [ ] Code style
 
 ## Java syntax for procedure style: primitive types system (2.5)
 ### Variable declaration
