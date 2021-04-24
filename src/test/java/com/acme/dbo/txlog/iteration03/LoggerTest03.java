@@ -1,15 +1,15 @@
 package com.acme.dbo.txlog.iteration03;
 
 import com.acme.dbo.txlog.SysoutCaptureAndAssertionAbility;
+import com.acme.dbo.txlog.facade.Facade;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Test;
 
-import java.io.IOException;
-
-public class LoggerTest implements SysoutCaptureAndAssertionAbility {
+public class LoggerTest03 implements SysoutCaptureAndAssertionAbility {
     //region given
     @Before
-    public void setUpSystemOut() throws IOException {
+    public void setUpSystemOut() {
         resetOut();
         captureSysout();
     }
@@ -20,85 +20,90 @@ public class LoggerTest implements SysoutCaptureAndAssertionAbility {
     }
     //endregion
 
-    /*
-    TODO: implement Logger solution to match specification as tests
-
     @Test
-    public void shouldLogIntegersArray() throws IOException {
+    public void shouldLogIntegersArray() {
         //region when
         Facade.log(new int[] {-1, 0, 1});
+        Facade.flush();
         //endregion
 
         //region then
         assertSysoutEquals(
-            "primitives array: {-1, 0, 1}\n"
+            "primitives array: {-1, 0, 1}" + System.lineSeparator()
         );
         //endregion
     }
 
     @Test
-    public void shouldLogIntegersMatrix() throws IOException {
+    public void shouldLogIntegersMatrix() {
         //region when
         Facade.log(new int[][] {{-1, 0, 1}, {1, 2, 3}, {-1, -2, -3}});
+        Facade.flush();
         //endregion
 
         //region then
         assertSysoutEquals(
-            "primitives matrix: {\n" +
-                "{-1, 0, 1}\n" +
-                "{1, 2, 3}\n" +
-                "{-1, -2, -3}\n" +
-            "}\n"
+            "primitives matrix: {" + System.lineSeparator() +
+                "{-1, 0, 1}" + System.lineSeparator() +
+                "{1, 2, 3}" + System.lineSeparator() +
+                "{-1, -2, -3}" + System.lineSeparator() +
+            "}" + System.lineSeparator()
         );
         //endregion
     }
 
     @Test
-    public void shouldLogIntegersMulitidimentionalArray() throws IOException {
+    public void shouldLogIntegersMulitidimentionalArray() {
         //region when
         Facade.log(new int[][][][] {{{{0}}}});
+        Facade.flush();
         //endregion
 
         //region then
         assertSysoutEquals(
-            "primitives multimatrix: {\n" +
-                "{\n" + "{\n" + "{\n" +
-                    "0\n" +
-                "}\n" + "}\n" + "}\n" +
-            "}\n"
+            "primitives multimatrix: {" + System.lineSeparator() +
+                "{" + System.lineSeparator() + "{" + System.lineSeparator() + "{" + System.lineSeparator() +
+                    "0" + System.lineSeparator() +
+                "}" + System.lineSeparator() + "}" + System.lineSeparator() + "}" + System.lineSeparator() +
+            "}" + System.lineSeparator()
         );
         //endregion
     }
 
     @Test
-    public void shouldLogStringsWithOneMethodCall() throws IOException {
+    public void shouldLogStringsWithOneMethodCall() {
         //region when
         Facade.log("str1", "string 2", "str 3");
+        Facade.flush();
         //endregion
 
         //region then
-        assertSysoutContains("str1\nstring 2\nstr 3");
+        assertSysoutContains("str1");
+        assertSysoutContains("string 2");
+        assertSysoutContains("str 3");
         //endregion
     }
 
     @Test
-    public void shouldLogIntegersWithOneMethodCall() throws IOException {
+    public void shouldLogIntegersWithOneMethodCall() {
         //region when
         Facade.log(-1, 0, 1, 3);
+        Facade.flush();
         //endregion
 
         //region then
-        assertSysoutContains("3");
+        assertSysoutContains("primitives array: {-1, 0, 1, 3}");
         //endregion
     }
 
     @Test
-    public void shouldCorrectDealWithIntegerOverflowWhenOneMethodCall() throws IOException {
+    public void shouldCorrectDealWithIntegerOverflowWhenOneMethodCall() {
         //region when
         Facade.log(1);
         Facade.log("str");
         Facade.log(Integer.MAX_VALUE - 10);
         Facade.log(11);
+        Facade.flush();
         //endregion
 
         //region then
@@ -108,6 +113,4 @@ public class LoggerTest implements SysoutCaptureAndAssertionAbility {
         assertSysoutContains(11);
         //endregion
     }
-
-    */
 }
